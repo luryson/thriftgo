@@ -23,7 +23,7 @@ const (
 	{{- range $Consts}}
 	{{InsertionPoint "constant" .Name}}
 	{{- if and Features.ReserveComments .ReservedComments}}{{.ReservedComments}}{{end}}
-	{{.GoName}} = {{.Initialization}}
+	{{.GoName}} {{- if Features.ReserveConstType }} {{.GoTypeName}} {{end}} = {{.Initialization}}
 	{{- end}}{{/* range $Consts */}}
 	{{InsertionPoint "constants"}}
 )

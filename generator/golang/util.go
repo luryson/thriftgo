@@ -296,7 +296,7 @@ func (cu *CodeUtils) genFieldTags(f *parser.Field, insertPoint string, extend []
 
 	if len(gotags) == 0 && cu.Features().GenerateJSONTag || cu.Features().AlwaysGenerateJSONTag {
 		id := f.Name
-		if cu.Features().SnakeTyleJSONTag {
+		if cu.Features().SnakeStyleJSONTag {
 			id = snakify(id)
 		}
 		if cu.Features().LowerCamelCaseJSONTag {

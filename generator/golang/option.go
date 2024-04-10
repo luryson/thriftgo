@@ -46,7 +46,7 @@ type Features struct {
 	GenerateTypeMeta            bool `gen_type_meta:"Generate and register type meta for structures."`
 	GenerateJSONTag             bool `gen_json_tag:"Generate struct with 'json' tag"`
 	AlwaysGenerateJSONTag       bool `always_gen_json_tag:"Always generate 'json' tag even if go.tag is provided (Disabled by default)"`
-	SnakeTyleJSONTag            bool `snake_style_json_tag:"Generate snake style json tag"`
+	SnakeStyleJSONTag           bool `snake_style_json_tag:"Generate snake style json tag"`
 	LowerCamelCaseJSONTag       bool `lower_camel_style_json_tag:"Generate lower camel case style json tag"`
 	GenerateReflectionInfo      bool `generate_reflection_info:"This option is no longer used. Please use with_reflection instead."`
 	WithReflection              bool `with_reflection:"Generate reflection info"`
@@ -66,7 +66,8 @@ type Features struct {
 	EnableRefInterface          bool `enable_ref_interface:"Generate Interface field without pointer type when 'thrift.is_interface=\"true\"' annotation is set to types in referred thrift."`
 	UseOption                   bool `use_option:"Parse specific Thrift annotations into struct-style option fields. If key not match, thriftgo will just ignore it."`
 	// ForceUseOption         bool `use_option:"Forcefully parse all Thrift annotations into struct-style option fields. If parsing is not possible, an error will be thrown."`
-	NoFmt bool `no_fmt:"To achieve faster generation speed, skipping the formatting of Golang code can improve performance by approximately 50%."`
+	NoFmt            bool `no_fmt:"To achieve faster generation speed, skipping the formatting of Golang code can improve performance by approximately 50%."`
+	ReserveConstType bool `reserve_const_type:"Reserve const type in generated code."`
 }
 
 var defaultFeatures = Features{
@@ -92,7 +93,7 @@ var defaultFeatures = Features{
 	GenerateTypeMeta:            false,
 	GenerateJSONTag:             true,
 	AlwaysGenerateJSONTag:       false,
-	SnakeTyleJSONTag:            false,
+	SnakeStyleJSONTag:           false,
 	LowerCamelCaseJSONTag:       false,
 	GenerateReflectionInfo:      false,
 	ThriftStreaming:             false,
@@ -105,6 +106,7 @@ var defaultFeatures = Features{
 	EnableNestedStruct:          false,
 	NoAliasTypeReflectionMethod: false,
 	EnableRefInterface:          false,
+	ReserveConstType:            false,
 }
 
 type param struct {
